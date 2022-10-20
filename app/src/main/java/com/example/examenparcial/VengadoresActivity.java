@@ -1,5 +1,6 @@
 package com.example.examenparcial;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +39,8 @@ public class VengadoresActivity extends AppCompatActivity implements ProductoAda
         super.onCreate(savedInstanceState);
         binding = ActivityVengadoresBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         leerDatos();
     }
@@ -81,26 +85,26 @@ public class VengadoresActivity extends AppCompatActivity implements ProductoAda
             binding.rvProductos.setAdapter(productoAdapter);
             binding.rvProductos.setLayoutManager(new LinearLayoutManager(this));
 
+            productoAdapter.setOnItemClickListener(this);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onItemClick(int position) {
-        //Log.d("POS-ACTI", String.valueOf(position));
-//        HashMap<String,String> map = (HashMap<String, String>) arrayList.get(position);
-//        String nombre = map.get("nombre");
-//        String idtipo = map.get("idtipo");
-//        Toast.makeText(this, nombre, Toast.LENGTH_SHORT).show();
-//
-//        Bundle bundle = new Bundle();
-//        bundle.putString("idtipo",idtipo);
-//        bundle.putString("nombre",nombre);
-//
-//        Intent intent = new Intent(this, CoffeDetalleActivity.class);
-//        intent.putExtras(bundle);
-//        startActivity(intent);
+        HashMap<String,String> map = (HashMap<String, String>) arrayList.get(position);
+        String nombre = map.get("nombre");
+        Toast.makeText(this, nombre, Toast.LENGTH_SHORT).show();
+        Log.d("POS-ACTI", String.valueOf(position));
     }
 }
