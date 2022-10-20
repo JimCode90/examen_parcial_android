@@ -3,4 +3,6 @@
     <string name="senior_anillos">Señor de los Anillos</string>
     <string name="ayuda">Ayuda</string>
     <string name="vengadores">Vengadores</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
