@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_senior_anillos"
+        android:title="@string/senior_anillos" >
+    </item>
+    <item
+        android:id="@+id/nav_vengadores"
+        android:title="@string/vengadores" >
+    </item>
+    <item
+        android:id="@+id/nav_ayuda"
+        android:title="@string/ayuda" >
+    </item>
+
+</menu>
